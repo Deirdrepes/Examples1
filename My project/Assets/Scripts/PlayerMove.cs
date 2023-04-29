@@ -29,7 +29,8 @@ public class PlayerMove : MonoBehaviour
     {
         Walk();
         Reflect();
-        Jump(); 
+        Jump();
+        CheckingGround();
     }
 
     private void FixedUpdate()
@@ -87,4 +88,21 @@ public class PlayerMove : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
+
+    public bool onGround;
+
+    public Transform GroundCheck;
+
+    public float checkRadius = 0.5f;
+
+    public LayerMask Ground;
+
+
+    void CheckingGround()
+    {
+
+        onGround = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
+    }
+
+
 }
