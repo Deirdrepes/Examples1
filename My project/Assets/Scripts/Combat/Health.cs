@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Health : MonoBehaviour
+{
+    [SerializeField] public float healthPoints = 100f;
+    // Start is called before the first frame update
+    bool isDead = false;
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("Hited");
+        healthPoints = Mathf.Max(healthPoints - damage, 0);
+        if (healthPoints == 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
+        gameObject.SetActive(false);
+    }
+}
