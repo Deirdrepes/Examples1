@@ -23,7 +23,7 @@ namespace Examples.Combat
         void Start()
         {
             currentWeaponLenth = GetComponent<Transform>();
-            currentWeaponLenth = null;
+            //currentWeaponLenth = null;
             weaponVector = GetComponent<Transform>();
             weaponVector = FindObjectOfType<Weapon>().transform;
 
@@ -44,11 +44,6 @@ namespace Examples.Combat
             }
         }
 
-        void FixedUpdate()
-        {
-
-        }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Debug.Log(collision + "check");
@@ -64,10 +59,6 @@ namespace Examples.Combat
                 timeSinceLastAttack = 0;
             }
         }
-
-        
-
-        
 
         private void OnDrawGizmos()
         {

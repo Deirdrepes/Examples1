@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Examples.Combat
+public class Weapon : MonoBehaviour
 {
-   
-    public class Weapon : MonoBehaviour
+    // Start is called before the first frame update
+    void Start()
     {
-        public List<Weapon> weapons;
-        // Start is called before the first frame update
-        void Start()
-        {
+        
+    }
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

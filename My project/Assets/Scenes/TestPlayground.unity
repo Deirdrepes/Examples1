@@ -210,132 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &44677845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3135829284039345469, guid: 79f776a8a54fbce419a933579a2aacee, type: 3}
-  m_PrefabInstance: {fileID: 697571702}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &44677846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44677845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f2f91a7eccfbb4382e05ec98cec353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 20
---- !u!61 &44677850
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44677845}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.55}
-    newSize: {x: 0.25, y: 0.55}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.55}
-  m_EdgeRadius: 0
---- !u!50 &44677851
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44677845}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &44677852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44677845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189b87d01c935c94aa985d53208f1403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &67452626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6798860094612690477, guid: 48614478784e6fe40b7405dcfa2d0674, type: 3}
   m_PrefabInstance: {fileID: 782391987}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &128743333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 128743334}
-  - component: {fileID: 128743335}
-  m_Layer: 0
-  m_Name: FakeWeapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &128743334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128743333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.215, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1974400146}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &128743335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128743333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 736fee5923476e34ea3a3eb00473d58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons: []
 --- !u!1 &133235774
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,50 +297,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &164803654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 164803655}
-  - component: {fileID: 164803656}
-  m_Layer: 0
-  m_Name: FakeRangeWeapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &164803655
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164803654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.215, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1974400146}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &164803656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164803654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86be7b65b3fd85d4c9273a960bed5844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponBullet: {fileID: 8085568749066399668, guid: b394c63c23001e44b850b0338f640bd4, type: 3}
 --- !u!4 &391072317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1078137205555266897, guid: dc7cf26215783b64d9ce2d9a002aa772, type: 3}
@@ -596,28 +431,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 548955084308669231, guid: 9faf78b8870cae3498574026c9c5eb77, type: 3}
   m_PrefabInstance: {fileID: 1148161772}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1014412565 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7214336875091448605, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
-  m_PrefabInstance: {fileID: 1112054120}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1014412571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014412565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2bcd42abb118b94191d6eeda4a59e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWeaponLenth: {fileID: 0}
-  weaponVector: {fileID: 0}
-  weaponIndex: 0
-  weaponDamage: 10
-  timeBetweenAttacks: 2
 --- !u!1 &1093602783
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,18 +592,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7214336875091448576, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
-      propertyPath: jumpForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7214336875091448576, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
-      propertyPath: bottomPart
-      value: 
-      objectReference: {fileID: 1423380269}
-    - target: {fileID: 7214336875091448576, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 7214336875091448579, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -833,10 +634,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7214336875091448579, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7214336875091448582, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7214336875091448605, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
@@ -973,11 +770,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1423380269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7214336874446161081, guid: 3cb2e26a9c0c91243b4e9b09e9959665, type: 3}
-  m_PrefabInstance: {fileID: 1112054120}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1759771372
 PrefabInstance:
   m_ObjectHideFlags: 0
