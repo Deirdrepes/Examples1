@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - CashUI_1
+  - CashUI_2
+  - CashUI_3
   layers:
   - Default
   - TransparentFX

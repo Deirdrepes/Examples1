@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -30,6 +31,22 @@ public class PlayerMove : MonoBehaviour
         Walk();
         Reflect();
         Jump();
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+        if(collision.gameObject.tag == "Item")
+        {
+            
+            Debug.Log("Yea it`s item");         
+            if(Physics2D.OverlapCircle(bottomPart.transform.position, 1f))
+            {
+                Destroy(collision.gameObject.GetComponentInChildren<GameObject>());
+            }
+        }
     }
 
     private void FixedUpdate()

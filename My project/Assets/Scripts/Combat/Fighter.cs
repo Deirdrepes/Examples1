@@ -14,8 +14,10 @@ namespace Examples.Combat
         [SerializeField] float weaponDamage = 10f;
         bool isHited = false;
 
+        Rigidbody2D weaponRigidbody;
         Weapon weapon1;
         Health health1;
+        Animator anim1;
 
         float timeSinceLastAttack = Mathf.Infinity;
         [SerializeField] float timeBetweenAttacks = 2f;
@@ -27,6 +29,8 @@ namespace Examples.Combat
             weaponVector = GetComponent<Transform>();
             weaponVector = FindObjectOfType<Weapon>().transform;
 
+            weaponRigidbody = GetComponent<Rigidbody2D>();
+            anim1 = GetComponent<Animator>();
             weapon1 = GetComponent<Weapon>();
             health1 = GetComponent<Health>();
         }
@@ -37,10 +41,10 @@ namespace Examples.Combat
             timeSinceLastAttack += Time.deltaTime;
             currentWeaponLenth = weaponVector.transform;
             
-            if(Input.GetKey(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.F))
             {
                 Attack();
-                Debug.Log("hit");
+                
             }
         }
 
@@ -51,11 +55,15 @@ namespace Examples.Combat
 
         void Attack()
         {
+            Debug.Log("hit");
+            anim1.SetTrigger("isAttack");
             var a = Physics2D.OverlapCircle(currentWeaponLenth.position, 0.1f);
-            if (timeSinceLastAttack > timeBetweenAttacks && a)
-            {        
-                a.GetComponent<Health>().TakeDamage(weaponDamage);
-              
+            //timeSinceLastAttack > timeBetweenAttacks &&
+            if (a && a != null)
+            {               
+                a?.GetComponent<Health>().TakeDamage(weaponDamage);
+                //weaponRigidbody.AddForce(currentWeaponLenth.right, ForceMode2D.Impulse);
+                
                 timeSinceLastAttack = 0;
             }
         }
