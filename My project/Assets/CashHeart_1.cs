@@ -10,8 +10,10 @@ public class CashHeart_1 : MonoBehaviour
     [SerializeField] GameObject gameObject1;
     [SerializeField] const int dropAmount = 1;
     [SerializeField] string tag1;
+    [SerializeField] bool isDestroyed;
     void Start()
     {
+        isDestroyed = false;
         //cash_UI = FindObjectOfType<CashHeart_UI>();
         if(gameObject1 == null)
         {
@@ -23,7 +25,10 @@ public class CashHeart_1 : MonoBehaviour
     
     void Update()
     {
-        
+        if (isDestroyed)
+        {
+            Invoke("InteractionInvoke", 0.3f);
+        }
     }
    
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +38,12 @@ public class CashHeart_1 : MonoBehaviour
             Debug.Log("Player keep it");
             cash_UI.currentAmount += dropAmount;
             cash_UI.UpdateData();
-            Destroy(gameObject);
+            isDestroyed = true;
         }
+    }
+
+    public void InteractionInvoke()
+    {
+        Destroy(gameObject);
     }
 }

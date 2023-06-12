@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     bool isDead = false;
 
+    Armor_Logic armorLogic;
+
     [SerializeField] List<GameObject> dropList;
  
     public void Start()
@@ -39,7 +41,7 @@ public class Health : MonoBehaviour
         Debug.Log("Hited");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         
-        healthPoints = Mathf.Max(healthPoints - damage, 0);
+        healthPoints = Mathf.Max((float)(healthPoints - damage * 1), 0);
         if (healthPoints == 0)
         {
             Die();
