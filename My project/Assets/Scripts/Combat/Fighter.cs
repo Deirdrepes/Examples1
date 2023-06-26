@@ -1,67 +1,93 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Examples.Combat
 {
 
+
     public class Fighter : MonoBehaviour
     {
-        [SerializeField] public Transform currentWeaponLenth;
-        [SerializeField] public Transform weaponVector;
+
+        public Weapons currentWeaponType;
+        [SerializeField] public Transform currentWeaponLenth;        
 
         [SerializeField] public int weaponIndex;
         [SerializeField] float weaponDamage = 10f;
         bool isHited = false;
 
-        Rigidbody2D weaponRigidbody;
-        Weapon weapon1;
-        Health health1;
+        
+        [SerializeField]Health health1;
         Animator anim1;
+
+        [SerializeField] AnimatorController animatorController;
+        [SerializeField] Armor_Logic armor;
+        [SerializeField] Current_Armor current_Armor;
+
+        [SerializeField] Weapon weapon;
+        [SerializeField] Current_Weapon current_Weapon;
 
         float timeSinceLastAttack = Mathf.Infinity;
         [SerializeField] float timeBetweenAttacks = 2f;
         // Start is called before the first frame update
         void Start()
-        {
-            currentWeaponLenth = GetComponent<Transform>();
-            //currentWeaponLenth = null;
-            weaponVector = GetComponent<Transform>();
-            weaponVector = FindObjectOfType<Weapon>().transform;
+        {                  
+            currentWeaponLenth = FindObjectOfType<Current_Weapon>().transform;
 
-            weaponRigidbody = GetComponent<Rigidbody2D>();
+            
             anim1 = GetComponent<Animator>();
-            weapon1 = GetComponent<Weapon>();
-            health1 = GetComponent<Health>();
+            animatorController = GetComponent<AnimatorController>();
+          
+           
+            health1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+
+
+            #region
+            //Armor Initiolization
+            armor = GetComponent<Armor_Logic>();
+            current_Armor = GameObject.FindGameObjectWithTag("CurrentArmor").GetComponent<Current_Armor>();
+            #endregion
         }
 
         // Update is called once per frame
         void Update()
         {
-            timeSinceLastAttack += Time.deltaTime;
-            currentWeaponLenth = weaponVector.transform;
             
-            if(Input.GetKeyDown(KeyCode.F))
+            if(health1.healthPoints != 0)
             {
-                Attack();
+                timeSinceLastAttack += Time.deltaTime;
                 
-            }
-        }
+                armor = current_Armor.armor;
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            Debug.Log(collision + "check");
+                animatorController = armor.armorAnimatorController;
+                anim1.runtimeAnimatorController = animatorController;
+
+
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    Attack();
+
+                }
+            }           
         }
 
         void Attack()
         {
-            Debug.Log("hit");
+             if(currentWeaponType == Weapons.Fists)
+            {
+                animatorController = weapon.armorAnimatorController;
+                
+                
+            }
+
             anim1.SetTrigger("isAttack");
+
+
             var a = Physics2D.OverlapCircle(currentWeaponLenth.position, 0.1f);
-            //timeSinceLastAttack > timeBetweenAttacks &&
+            
             if (a && a != null)
             {               
-                a?.GetComponent<Health>().TakeDamage(weaponDamage);
+                a.GetComponent<Health>().TakeDamage(weaponDamage, currentWeaponType, weapon);
                 //weaponRigidbody.AddForce(currentWeaponLenth.right, ForceMode2D.Impulse);
                 
                 timeSinceLastAttack = 0;

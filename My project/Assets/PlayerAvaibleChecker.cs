@@ -1,3 +1,4 @@
+using Examples.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class PlayerAvaibleChecker : MonoBehaviour
     public HeartUI heartUI2;
     public HeartUI heartUI3;
     public HeartUI heartUI4;
+
+    public PlayerMove playerMove;
+    public Health health;
+    public Fighter fighter;
     
     [SerializeField] private GameObject player;
     [SerializeField] private Vector2 spawnPoint;
@@ -36,7 +41,7 @@ public class PlayerAvaibleChecker : MonoBehaviour
         return playerAvaible != null;
     }
 
-    void Respawn()
+    public void Respawn()
     {
         Instantiate(player,spawnPoint, new Quaternion());
 

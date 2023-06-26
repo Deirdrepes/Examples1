@@ -8,6 +8,8 @@ TagManager:
   - CashUI_1
   - CashUI_2
   - CashUI_3
+  - CurrentArmor
+  - Sound
   layers:
   - Default
   - TransparentFX

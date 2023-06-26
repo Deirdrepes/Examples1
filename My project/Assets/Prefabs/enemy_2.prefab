@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_Sprite: {fileID: -5816192075650975968, guid: b2c6d0acef7741043883ac2e54b4c77e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -169,8 +169,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 200
   maxHealthPoints: 100
+  armorLogic: {fileID: 0}
+  current_Armor: {fileID: 0}
   dropList:
   - {fileID: 7622011103625675055, guid: 1ad1eb90ddfe2ad4780620ad1e3bbaa0, type: 3}
+  - {fileID: 9165369391953378337, guid: 7723b3ecaf3ef794babe162191b56b09, type: 3}
   spriteRenderer: {fileID: 0}
 --- !u!114 &3410991139449024260
 MonoBehaviour:
@@ -197,11 +200,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  patrolList: []
   currentWeaponLenth: {fileID: 3410991138551270017}
   speed: 0.5
   agroDistance: 1.5
   attackDistance: 0.3
   damageHit: 10
+  leftBorder: {fileID: 0}
+  rightBorder: {fileID: 0}
 --- !u!1 &3410991138551270016
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,10 +14,11 @@ public class CM_vcam1_Logic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        playerAvaible = GameObject.FindGameObjectWithTag("Player");
-        cinemachineVirtualCamera.Follow = playerAvaible.transform;
+        playerAvaible = GameObject.FindGameObjectWithTag("Player"); 
         cinemachineVirtualCamera.LookAt = playerAvaible.transform;
+        cinemachineVirtualCamera.Follow = playerAvaible.transform;
+       
     }
 }

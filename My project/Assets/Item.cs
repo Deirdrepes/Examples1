@@ -1,25 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public interface IItem
 {
-    [SerializeField] private static int id;
-    [SerializeField] private GameObject GameObject;
-    [SerializeField] private string name;
-    [SerializeField] private string description;
-    [SerializeField] private Image icon;
-    [SerializeField] public float luckyrRate;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    string Path { get; set; }
+    bool IsDestroyed { get; set; }
+    void RemoverCloneNaming();
+    void ItemKeeper(Collider2D collider);
+    void InteractionInvoke();
 }

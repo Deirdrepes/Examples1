@@ -32,6 +32,14 @@ public class HeartUI : MonoBehaviour
         gameObject1 = GameObject.FindGameObjectWithTag("Player");
         health = gameObject1.GetComponent<Health>();
 
+        if (health.healthPoints == 0)
+        {
+            heart1.gameObject.SetActive(false);
+            heart2.gameObject.SetActive(false);
+            heart3.gameObject.SetActive(true);
+            return;
+        }
+
         if (firstValue >= health.healthPoints)
         {
             heart1.gameObject.SetActive(false);

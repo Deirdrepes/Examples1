@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -15,24 +16,61 @@ public class PlayerMove : MonoBehaviour
 
     private Vector2 moveVector;
     private bool faceRight = true;
-    
+
+    [SerializeField] AnimatorController animatorController;
+    [SerializeField] public Armor_Logic armor;
+
+    [SerializeField] public Current_Armor current_Armor;
+
     [SerializeField] LayerMask layerMask;
     [SerializeField] GameObject bottomPart;
 
-    void Start()
+    [SerializeField] Health Health;
+
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //sr = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
+        animatorController = GetComponent<AnimatorController>();
+        armor = GetComponent<Armor_Logic>();
+        current_Armor = GameObject.FindGameObjectWithTag("CurrentArmor").GetComponentInChildren<Current_Armor>();
+        Health = gameObject.GetComponent<Health>();
     }
+
+    //void Start()
+    //{
+    //    //animatorController = armor.armorAnimatorController;
+    //    //sr.sprite = armor.spriteRenderer.sprite;
+    //    //anim.runtimeAnimatorController = animatorController;
+    //}
 
     void Update()
     {
-        Walk();
-        Reflect();
-        Jump();
+        if (Health.healthPoints != 0)
+        {
 
+            Debug.Log("we can move");
+            ArmorAnimationLogic();
+            Walk();
+            Reflect();
+            Jump();
+        }
+        else
+        {
+            Debug.Log("we can`t move");
+            return;
+        }
+    }
 
+    private void ArmorAnimationLogic()
+    {
+        armor = current_Armor.armor;
+
+        animatorController = armor.armorAnimatorController;
+        //sr.sprite = armor.spriteRenderer.sprite;
+        anim.runtimeAnimatorController = animatorController;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,6 +107,7 @@ public class PlayerMove : MonoBehaviour
     void Walk()
     {
         moveVector.x = Input.GetAxis("Horizontal");
+        
         anim.SetFloat("Movex", Mathf.Abs(moveVector.x));
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
     }
