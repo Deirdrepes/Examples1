@@ -69,8 +69,14 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float damage, Weapons weaponEnum, Weapon weapon)
     {
-        
+
+    
+
         if(weaponEnum == Weapons.Fists)
+
+        healthPoints = Mathf.Max(healthPoints - damage, 0);
+        if (healthPoints == 0)
+
         {
             
             Debug.Log("Fists Attack");

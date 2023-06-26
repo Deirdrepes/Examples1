@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736fee5923476e34ea3a3eb00473d58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorAnimatorController: {fileID: 0}
+  GameObject: {fileID: 0}
+  armorAnimatorController: {fileID: 9100000, guid: 807a2d4cc5a4ef84092b850e5db26709, type: 2}
   weaponVector: {x: 0, y: 0}
   xPos: 0
   yPos: 0

@@ -151,12 +151,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+<<<<<<< HEAD:My project/Assets/Animations/Player_anim/Armor_1/Player_1.controller
+<<<<<<< HEAD:My project/Assets/Animations/Player_anim/Armor_1/Player_1.controller
   - m_Name: isDead1
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+=======
+>>>>>>> parent of c9d69b8 (New Graphic Content For Great Update):My project/Assets/Animations/Player_anim/Player_0.controller
+=======
+>>>>>>> parent of c9d69b8 (New Graphic Content For Great Update):My project/Assets/Animations/Player_anim/Player_0.controller
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

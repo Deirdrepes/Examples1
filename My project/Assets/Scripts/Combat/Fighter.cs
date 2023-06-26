@@ -73,7 +73,7 @@ namespace Examples.Combat
 
         void Attack()
         {
-             if(currentWeaponType == Weapons.Fists)
+            if(currentWeaponType == Weapons.Fists)
             {
                 animatorController = weapon.armorAnimatorController;
                 
