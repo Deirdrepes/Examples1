@@ -142,8 +142,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: -2311659948842064771, guid: 8cf4a3df87815c34295cc18123f159a5, type: 3}
+  m_SortingOrder: 971
+  m_Sprite: {fileID: -2311659948842064771, guid: fb7d27d37da6acf4eb60453cbb74b688, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   sr: {fileID: 0}
   speed: 2
   jumpForce: 5
+  faceRight: 1
   animatorController: {fileID: 0}
   armor: {fileID: 0}
   current_Armor: {fileID: 0}
@@ -266,12 +267,12 @@ MonoBehaviour:
   weaponDamage: 10
   radiusOfKnifeAttack: 0.1
   radiusOfSwordAttack: 0.2
-  testBullet: {fileID: 8213507463893290510, guid: 438bf929b3daf6941b35373134de085a, type: 3}
+  testBullet: {fileID: 4046759829575534539, guid: fc31a5a13a5336949bcc73f667c22d33, type: 3}
   health1: {fileID: 0}
   animatorController: {fileID: 0}
+  weapon: {fileID: 0}
   armor: {fileID: 0}
   current_Armor: {fileID: 0}
-  weapon: {fileID: 0}
   current_Weapon: {fileID: 0}
   timeBetweenAttacks: 2
 --- !u!114 &682755652

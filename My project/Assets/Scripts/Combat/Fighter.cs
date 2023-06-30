@@ -42,7 +42,7 @@ namespace Examples.Combat
         void Start()
         {
             weapon = GetComponent<Weapon>();
-            currentKnifeLenth = FindObjectOfType<Current_Weapon>().transform;
+            //currentKnifeLenth = FindObjectOfType<Current_Weapon>().transform;
 
             
             
