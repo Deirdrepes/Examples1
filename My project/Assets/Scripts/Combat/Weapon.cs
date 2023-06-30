@@ -1,27 +1,32 @@
+using Examples;
+using Examples.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class Weapon : MonoBehaviour, IItem
 {
     public bool IsDestroyed { get; set; }
     public string Path { get; set; }
+    [SerializeField] public float damage;
+    [SerializeField] public float meleeRange;
 
-    public GameObject GameObject;
+    public GameObject bulletOfRangeWeapon;
 
-    [SerializeField] public AnimatorController armorAnimatorController;
-    
-    [SerializeField] public Vector2 weaponVector;
-    [SerializeField] public float xPos;
-    [SerializeField] public float yPos;
+    [SerializeField] public AnimationClip animationClip;
+
+    public Weapons weapons;
+    public Tiers tiers;
 
     Current_Weapon current_Weapon;
 
     // Start is called before the first frame update
     void Start()
     {
+       
        // weaponVector.Set(GetComponentInParent<Transform>().localPosition.x + xPos, GetComponentInParent<Transform>().localPosition.y + yPos);
         current_Weapon = FindObjectOfType<Current_Weapon>().GetComponentInChildren<Current_Weapon>();
         RemoverCloneNaming();
@@ -43,7 +48,7 @@ public class Weapon : MonoBehaviour, IItem
     // Update is called once per frame
     void Update()
     {
-        weaponVector.x = weaponVector.x + 1;
+        
         
         if (IsDestroyed)
         {

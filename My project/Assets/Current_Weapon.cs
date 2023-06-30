@@ -19,7 +19,7 @@ public class Current_Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       GameObject = FindObjectOfType<Current_Weapon>().GetComponent<Transform>();
+        GameObject = FindObjectOfType<Current_Weapon>().GetComponent<Transform>();
         transform.position = weapon.transform.position;
         GameObject.position = transform.position;
     }

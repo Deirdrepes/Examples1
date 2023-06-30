@@ -79,12 +79,12 @@ public class Health : MonoBehaviour
 
         {
             
-            Debug.Log("Fists Attack");
+            Debug.Log("Fists SwordAttack");
         }
         else if (weaponEnum == Weapons.Knife)
         {
             damage = damage + 10;
-            Debug.Log("Knife Attack");
+            Debug.Log("Knife SwordAttack");
         }
         else if(weaponEnum == Weapons.Null)
         {

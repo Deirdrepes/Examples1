@@ -10,6 +10,7 @@ TagManager:
   - CashUI_3
   - CurrentArmor
   - Sound
+  - Enemy
   layers:
   - Default
   - TransparentFX

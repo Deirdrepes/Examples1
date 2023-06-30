@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorNumber: 0.5
-  armorAnimatorController: {fileID: 9100000, guid: 584562efc25fc14469791ac6b7aaa18a, type: 2}
-  isDestroyed: 0
+  armorAnimatorController: {fileID: 9100000, guid: 2c21b3ab5dc23274f93f522d3a7ef94e, type: 2}
 --- !u!212 &-7794575595120345804
 SpriteRenderer:
   m_ObjectHideFlags: 0

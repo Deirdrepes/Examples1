@@ -38,10 +38,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318574654712387105}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 762f8b63ebd85df43a465e8de6ac3c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 4186652520833425054, guid: c1fda208f03b60c428e91626bd49ba02, type: 3}
   defaultWeapon: {fileID: 0}
+  GameObject: {fileID: 0}

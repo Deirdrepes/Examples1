@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpForce = 7f;
 
     private Vector2 moveVector;
-    private bool faceRight = true;
+    public bool faceRight = true;
 
     [SerializeField] AnimatorController animatorController;
     [SerializeField] public Armor_Logic armor;
@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] Health Health;
 
+    [SerializeField] GameObject stepSoundBody;
+    [SerializeField] bool isQuiet = false;
 
     void Awake()
     {
@@ -56,6 +58,7 @@ public class PlayerMove : MonoBehaviour
             Walk();
             Reflect();
             Jump();
+            if(Input.GetKey(KeyCode.LeftControl)) { isQuiet = true; } else { isQuiet = false; }
         }
         else
         {
@@ -111,6 +114,15 @@ public class PlayerMove : MonoBehaviour
         anim.SetFloat("Movex", Mathf.Abs(moveVector.x));
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
     }
+
+    public void StepSound()
+    {
+        if(!isQuiet)
+        {
+            Instantiate(stepSoundBody, bottomPart.transform.position, Quaternion.identity);
+        }        
+    }
+        
 
     void Reflect()
     {

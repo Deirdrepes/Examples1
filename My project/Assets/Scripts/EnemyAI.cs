@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class EnemyAI : MonoBehaviour, IHear
+public class EnemyAI : MonoBehaviour
 {
 
     [SerializeField] public GameObject? enemy;
@@ -20,6 +20,7 @@ public class EnemyAI : MonoBehaviour, IHear
     [SerializeField] float attackDistance = 2f;
 
 
+    [SerializeField] bool ignoreAlls = false;
 
     Sound someSound;
 
@@ -40,9 +41,7 @@ public class EnemyAI : MonoBehaviour, IHear
         animator = GetComponent<Animator>();
         animation = GetComponent<Animation>();
         enemy = GetComponent<GameObject>();
-        enemy = null;
-        //enemy = FindObjectOfType<PlayerMove>().gameObject;
-        
+        enemy = null;      
     }
 
     public void Update()
@@ -64,17 +63,25 @@ public class EnemyAI : MonoBehaviour, IHear
         //    CheckSpace();
         //}
 
-
-
+        if(enemy != null && enemy.tag == "Player")
+        {
+            //Physics2D.IgnoreLayerCollision(0, 1, true);
+            ignoreAlls = true;
+        }
+        else
+        {
+            ignoreAlls = false;
+        }
+        
+       
         if (gameObject.GetComponent<Health>().healthPoints != 0)
         {
             if (enemy != null && enemy.GetComponent<Health>().healthPoints != 0)
             {
-                float distToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+                float distToEnemy = rigidbody.Distance(enemy.GetComponent<BoxCollider2D>()).distance;
                 Debug.Log("Default dist: " + distToEnemy);
                 StandartBehaviour(distToEnemy);
-                //Debug.Log("Distance to enemy: "+distToEnemy);
-                //Debug.Log("Box Collider Size: "+enemy.GetComponent<BoxCollider2D>().size.x / 2);
+               
                 if (distToEnemy >= agroDistance)
                 {
                     Debug.Log("we start coroutine");
@@ -82,7 +89,7 @@ public class EnemyAI : MonoBehaviour, IHear
                     StartCoroutine(TimeAfterNullTarget());
 
                 }
-                else if (distToEnemy <= agroDistance + enemy.GetComponent<BoxCollider2D>().size.x)
+                else if (distToEnemy <= agroDistance)
                 {
                     Debug.Log("we stop coroutine");
 
@@ -115,9 +122,9 @@ public class EnemyAI : MonoBehaviour, IHear
             StopHunting();
             return;
         }
-
+        
     }
-
+    
     IEnumerator TimeAfterNullTarget()
     {
         StartHunting();
@@ -127,11 +134,10 @@ public class EnemyAI : MonoBehaviour, IHear
 
     }
     
-
     public void StandartBehaviour(float? distToEnemy)
     {
         StopCoroutine(TimeAfterNullTarget());
-        if (distToEnemy <= agroDistance + enemy.GetComponent<BoxCollider2D>().size.x && StoppingAfterAttack((float)distToEnemy) != true)
+        if (distToEnemy <= agroDistance && StoppingAfterAttack((float)distToEnemy) != true)
         {
             animator.SetBool("IsAttack", false);
             StartHunting();
@@ -185,59 +191,61 @@ public class EnemyAI : MonoBehaviour, IHear
 
 
     }
-
     
     void CheckSpace()
     {
-        //Debug.Log("Check Space");
-        var a = Physics2D.OverlapCircle(gameObject.transform.position, agroDistance);
-
-        var b = Physics2D.Raycast(transform.position, -transform.right, agroDistance);
-     
-        if (a)
+        /*
+         * This a very fucking bad variant, it makes a lot of fucking bugs
+         */
+        //Future will be OverlapCircleNonAlloc
+        foreach (var a in Physics2D.RaycastAll(transform.position, new Vector2(-transform.localScale.x, 0), agroDistance))
         {
-            Debug.Log("Check Space");
-            tags = a.tag;
-            switch(tags)
+            tags = a.transform.tag;
+            //Debug.Log(tags);
+            switch (tags)
             {
                 case "Player":
-                    {     
-                        enemy = a.gameObject;
-                        
-                        
-                    }
+                    enemy = a.transform.gameObject;
                     break;
 
                 case "Item":
-                    {
-                        enemy = a.gameObject;                  
-                    }
-                    break;
+                    enemy = a.transform.gameObject;
+                    break;              
 
-
-                case "Sound":
-                    {
-                        enemy = a.gameObject;
-                    }
+                default:
+                    print("Non");
                     break;
-                //default:
-                //    {
-                //        print("Y");
-                //        enemy = null;
-                //        return;
-                //    }
-                   
             }
-          
         }
-        
+
+        foreach (var ab in Physics2D.OverlapCircleAll(transform.position, agroDistance))
+        {
+            tags = ab.tag;
+            //Debug.Log(tags);
+            switch (tags)
+            {                            
+                case "Sound":
+                    if (!ignoreAlls)
+                    {
+                        enemy = ab.gameObject;
+                    }                                    
+                    break;
+
+                    default:
+                    print("nothing");
+                    break;
+            }
+        }      
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision != null && collision.transform.tag == "Player") { enemy = collision.gameObject; }
+    }
 
     private bool StoppingAfterAttack(float distToEnemy)
     {
-        if (distToEnemy <= attackDistance)
+        if (distToEnemy <= attackDistance-0.1f)
         {
             return true;
         }
@@ -249,7 +257,7 @@ public class EnemyAI : MonoBehaviour, IHear
 
     private void Attack()
     {
-        Debug.Log("Is Attack");
+        Debug.Log("Is SwordAttack");
         StopHunting();
         var a = Physics2D.OverlapCircle(currentWeaponLenth.position, 0.1f);
         if (a)
@@ -263,19 +271,13 @@ public class EnemyAI : MonoBehaviour, IHear
 
     public void StartHunting()
     {
-        //if(enemy.transform.position.y < transform.position.y)
-        //{
-        //    rigidbody.ClosestPoint(transform.position);
-        //}
-
-
-        if(enemy.transform.position.x < transform.position.x)
+        if(enemy.transform.position.x <= transform.position.x)
         {          
             
             rigidbody.velocity = new Vector2(-speed, 0);
             transform.localScale = new Vector2(1, 1);
         }
-        else if(enemy.transform.position.x > transform.position.x)
+        else if(enemy.transform.position.x >= transform.position.x)
         {         
             
             rigidbody.velocity = new Vector2(speed, 0);
@@ -288,7 +290,6 @@ public class EnemyAI : MonoBehaviour, IHear
         rigidbody.velocity = new Vector2(0, 0);
     }
 
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
@@ -300,12 +301,6 @@ public class EnemyAI : MonoBehaviour, IHear
         Gizmos.DrawWireSphere(currentWeaponLenth.position, 0.1f);
 
         Gizmos.color = Color.white;
-        Gizmos.DrawRay(transform.position, -transform.right);
-    }
-
-    public void RespondToSound(Sound sound)
-    {
-        print("Hello");
-        enemy.transform.position = sound.pos;
-    }
+        Gizmos.DrawRay(transform.position, new Vector2(-transform.localScale.x, 0));
+    }   
 }

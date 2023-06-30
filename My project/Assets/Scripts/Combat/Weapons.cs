@@ -5,6 +5,7 @@
         Fists,
         Knife,
         Sword,
+        Range,
         Null
     }
 }

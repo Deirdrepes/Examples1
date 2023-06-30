@@ -95,4 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736fee5923476e34ea3a3eb00473d58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorAnimatorController: {fileID: 9100000, guid: 8b855cf2c2b676e4dbf98bd26100ebe5, type: 2}
+  GameObject: {fileID: 0}
+  bulletOfRangeWeapon: {fileID: 0}
+  weapons: 1
+  tiers: 1
+  weaponAnimatorController: {fileID: 0}
