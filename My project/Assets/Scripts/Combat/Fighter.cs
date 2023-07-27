@@ -10,13 +10,15 @@ namespace Examples.Combat
     {
 
         public Weapons currentWeaponType;
-        [SerializeField] public Transform currentKnifeLenth;
-        [SerializeField] public Transform currentSwordLenth;
-        [SerializeField] public Transform currentRangeWeaponLenth;        
-        //[SerializeField] public Transform currentWeaponLenth;        
+        [SerializeField] public Transform? currentKnifeLenth;
+        [SerializeField] public Transform? currentSwordLenth;
+        [SerializeField] public Transform? currentRangeWeaponLenth;        
+        [SerializeField] public Transform? currentWeaponLenth;        
         
         //[SerializeField] public int weaponIndex;
         [SerializeField] float weaponDamage;
+        [SerializeField] float weaponKnifeDamage;
+        [SerializeField] float weaponSwordDamage;
 
         [SerializeField] float radiusOfKnifeAttack;
         [SerializeField] float radiusOfSwordAttack;
@@ -34,14 +36,14 @@ namespace Examples.Combat
         [SerializeField] Armor_Logic armor;
         [SerializeField] Current_Armor current_Armor;
 
-        [SerializeField] Current_Weapon current_Weapon;
+        [SerializeField] Current_Weapon? current_Weapon;
 
         float timeSinceLastAttack = Mathf.Infinity;
         [SerializeField] float timeBetweenAttacks = 2f;
         // Start is called before the first frame update
         void Start()
         {
-            weapon = GetComponent<Weapon>();
+            //weapon = GetComponent<Weapon>();
             //currentKnifeLenth = FindObjectOfType<Current_Weapon>().transform;
 
             
@@ -73,49 +75,106 @@ namespace Examples.Combat
                 animatorController = armor.armorAnimatorController;
                 anim1.runtimeAnimatorController = animatorController;
 
-
+                
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    KnifeAttack();                   
+                    var b = FindObjectsByType<Current_Weapon>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).GetValue(0);
+                    current_Weapon = (Current_Weapon)b;
+
+                    weaponKnifeDamage = current_Weapon.weaponKnife.Damage;
+                    string s;
+                    s = current_Weapon.weaponKnife.animationClip.name;
+                    if (current_Weapon.weaponKnife != null && current_Weapon.weaponKnife.tier == current_Armor.armor.tier)
+                    {
+                        anim1.SetTrigger(s);
+                        print(s);
+
+                        //KnifeAttack();
+                    }                 
                 }
                 if (Input.GetKeyDown(KeyCode.F))
-                {                   
-                    SwordAttack();
+                {
+                    Attack();                   
+                }
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    var b = FindObjectsByType<Current_Weapon>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).GetValue(0);
+                    current_Weapon = (Current_Weapon)b;
+
+                    weaponSwordDamage = current_Weapon.weaponSword.Damage;
+                    string s;
+                    s = current_Weapon.weaponSword.animationClip.name;
+                    if (current_Weapon.weaponSword != null && current_Weapon.weaponSword.tier == current_Armor.armor.tier)
+                    {
+                        anim1.SetTrigger(s);
+                        print(s);
+
+                        //KnifeAttack();
+                    }
+                    //SwordAttack();
                 }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
                     RangeAttack();               
                 }
-            }           
+            }
+            
         }
 
-        void KnifeAttack()
+        void Attack()
         {
-            weaponDamage = 10;
-            anim1.SetTrigger("isKnifeAttack");
+            weaponDamage = 5;
+            anim1.SetTrigger("isAttack");
 
 
             var a = Physics2D.OverlapCircle(currentKnifeLenth.position, radiusOfKnifeAttack);
 
             if (a && a != null)
             {
-                a.GetComponent<Health>().TakeDamage(weaponDamage, currentWeaponType, weapon);              
+                a.GetComponent<Health>().TakeDamage(weaponDamage, currentWeaponType);              
                 timeSinceLastAttack = 0;
             }
+            print(weaponDamage + "Fist Attack damage");
+        }
+        void KnifeAttack()
+        {
+            //var b = FindObjectsByType<Current_Weapon>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).GetValue(2);
+            //current_Weapon = (Current_Weapon)b;
+            //print(b);
+
+            //weaponKnifeDamage = current_Weapon.weaponKnife.Damage;
+            //string s;
+            //s = current_Weapon.weaponKnife.animationClip.name;
+            //anim1.SetTrigger(s);
+            //print(s);
+
+            //anim1.SetTrigger("isKnifeAttack");
+
+
+            //weaponDamagee = weaponDamage;
+            //print(weaponDamagee);
+            var a = Physics2D.OverlapCircle(currentKnifeLenth.position, radiusOfKnifeAttack);
+
+            if (a && a != null)
+            {
+                a.GetComponent<Health>().TakeDamage(weaponKnifeDamage, currentWeaponType);              
+                timeSinceLastAttack = 0;
+            }
+            print(weaponKnifeDamage);
         }
 
         void SwordAttack()
         {
-            weaponDamage = 20;
-            anim1.SetTrigger("isSwordAttack");
+            //weaponDamage = 20;
+            //anim1.SetTrigger("isSwordAttack");
 
             var a = Physics2D.OverlapCircleAll(currentSwordLenth.position, radiusOfSwordAttack);
 
             foreach(var b in a)
             {
                 
-                    b.GetComponent<Health>().TakeDamage(weaponDamage, currentWeaponType, weapon);
+                    b.GetComponent<Health>().TakeDamage(weaponSwordDamage, currentWeaponType);
                     timeSinceLastAttack = 0;
                 
             }

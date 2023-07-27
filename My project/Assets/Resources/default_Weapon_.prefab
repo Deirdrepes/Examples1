@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4879354245559825149}
-  - component: {fileID: 4879354245559825148}
+  - component: {fileID: 8477834970398562053}
   m_Layer: 0
   m_Name: default_Weapon_
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4879354245559825148
+--- !u!114 &8477834970398562053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4879354245559825139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 736fee5923476e34ea3a3eb00473d58e, type: 3}
+  m_Script: {fileID: 11500000, guid: 70b32249ee2fd0f4db9f2f439a2e7f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObject: {fileID: 0}
-  armorAnimatorController: {fileID: 9100000, guid: 807a2d4cc5a4ef84092b850e5db26709, type: 2}
-  weaponVector: {x: 0, y: 0}
-  xPos: 0
-  yPos: 0
+  damage: 0
+  animClip: {fileID: 0}
+  spriteUI: {fileID: 0}
+  tier: 0
+  current_Weapon: {fileID: 0}

@@ -67,36 +67,17 @@ public class Health : MonoBehaviour
         Debug.Log(isDead);
         return isDead;
     }
-    public void TakeDamage(float damage, Weapons weaponEnum, Weapon weapon)
+    public void TakeDamage(float damage, Weapons weaponEnum)
     {
-
-    
-
-        if(weaponEnum == Weapons.Fists)
-
-        healthPoints = Mathf.Max(healthPoints - damage, 0);
-        if (healthPoints == 0)
-
-        {
-            
-            Debug.Log("Fists SwordAttack");
-        }
-        else if (weaponEnum == Weapons.Knife)
-        {
-            damage = damage + 10;
-            Debug.Log("Knife SwordAttack");
-        }
-        else if(weaponEnum == Weapons.Null)
-        {
-            Debug.Log("Null");
-        }
-        //if (isDead) { return ; }
+        //healthPoints = Mathf.Max(healthPoints - damage, 0);
         if (!IsDead()) 
         {
             Debug.Log("Hited");
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
+            //healthPoints = Mathf.Max((float)(healthPoints - damage), 0);
             healthPoints = Mathf.Max((float)(healthPoints - damage * armorLogic.armorNumber), 0);
+            //print(armorLogic.armorNumber);
             if (healthPoints == 0)
             {
                 
